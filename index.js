@@ -1,5 +1,22 @@
 const connectWallet = async () => {
-  console.log("Connecting ....")
+  let userHasMetaMask = checkForMetaMask();
+
+  if (!userHasMetaMask) {
+    alert("You do not have metamask!");
+    return;
+  }
+
+  console.log("You have metamask!");
+  let userHasAuthenticatedWallet = checkForAuthenticatedEthereumWallet();
+
+  if (!userHasAuthenticatedWallet) {
+    alert("You do not hve an have an authenticatdmetamask!");
+  }
+
+  console.log("You have  an authenticated metamask wallet!");
+
+  const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+  location.replace('https://resolutio.ai/');
 }
 
 const checkForMetaMask = async () => {
