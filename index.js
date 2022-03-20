@@ -15,5 +15,12 @@ const checkForMetaMask = async () => {
 }
 
 const checkForAuthenticatedEthereumWallet = async () => {
-  console.log("yes")
+  var accounts = await ethereum.request({ method: 'eth_accounts' })
+
+  if (accounts.length !== 0) {
+    console.log(`Authorized Account found: ${accounts[0]}`);
+    return true;
+  }
+  console.log("no account found ");
+  return false;
 }  
